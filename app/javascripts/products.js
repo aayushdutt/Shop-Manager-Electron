@@ -5,7 +5,6 @@ addButton.addEventListener('click', function(){
 })
 
 
-
 function addRow() {
     // Create table.
     var row1 = document.createElement('tr');
@@ -13,7 +12,7 @@ function addRow() {
     var row1col2 = row1.insertCell(0);
     row1col2.innerHTML = '<input type="text" class="form-control" />';
     var row1col3 = row1.insertCell(1);
-    row1col3.innerHTML = '<input class="form-control" type="number" value="1"/>';
+    row1col3.innerHTML = '<input type="text" class="form-control" />';
     var row1col4 = row1.insertCell(2);
     row1col4.innerHTML = '<input type="text" class="form-control" />';
     var row1col5 = row1.insertCell(3);

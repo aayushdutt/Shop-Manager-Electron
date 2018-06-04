@@ -4,25 +4,23 @@
   <meta charset="utf-8">
   <title>Electron Boilerplate</title>
   <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
 </head>
 <body>
 <div >
 
   <!-- NAVBAR start -->
-  <ul class="nav mb-2 nav-fill nav-pills">
+  <ul class="nav nmb-2 nav-fill nav-pills">
       <li class="nav-item">
-          <a class="nav-link" href="./app.html">Home</a>
+          <a class="nav-link btn-outline-secondary" href="./app.html">Home</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#">Products</a>
+          <a class="nav-link active btn-outline-secondary" href="#">Products</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#">Sales</a>
+          <a class="nav-link btn-outline-secondary" href="#">Sales</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#">Other</a>
+          <a class="nav-link btn-outline-secondary" href="">Other</a>
       </li>
   </ul>
   <!-- NAVBAR END -->
@@ -62,7 +60,8 @@
 
   <div class="mr-2 row">
     <div class="col-lg-12">
-        <button id="addButton" class="btn btn-primary float-right">Add Item</button>
+      <button id="addButton" class="btn btn-primary float-right">Add Item</button>
+      <button id="saveButton" class="mr-2 btn btn-success btn-lg float-right">Save</button>
     </div>
 </div>  
   <!-- TABLE END -->
@@ -72,7 +71,7 @@
   
 </div>
   <script src="app.js"></script>
-  <script src="./javascripts/billing.js"></script>
+  <script src="./javascripts/products.js"></script>
 
 </body>
 </html>
