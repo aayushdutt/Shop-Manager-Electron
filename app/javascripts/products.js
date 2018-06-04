@@ -5,6 +5,19 @@ addButton.addEventListener('click', function(){
 })
 
 
+var removeButtons = document.querySelectorAll('.btn-danger')
+
+for (var i = 0; i < removeButtons.length; i++) {
+    removeButtons[i].addEventListener('click', function(event) {
+        if (confirm("Sure u want to delete ")) {
+            removeRow(event)
+        }
+        
+    });
+}
+
+
+
 function addRow() {
     // Create table.
     var row1 = document.createElement('tr');
@@ -17,17 +30,19 @@ function addRow() {
     row1col4.innerHTML = '<input type="text" class="form-control" />';
     var row1col5 = row1.insertCell(3);
     row1col5.innerHTML = '<input type="text" class="form-control" />';
-    var row1col6 = row1.insertCell(4);
-    row1col6.innerHTML = '<input type="text" class="form-control" />';
-    var row1col7 = row1.insertCell(5);
+    var row1col7 = row1.insertCell(4);
     row1col7.innerHTML = '<button class="btn btn-danger" type="button">Remove</button>';
     
     
-    var div = document.getElementById('productBillTable');
+    var div = document.getElementById('productTable');
 
 
     div.appendChild(row1)
-    row1col7.firstChild.addEventListener('click', function(e){removeRow(e)})
+    row1col7.firstChild.addEventListener('click', function(e){ 
+        if (confirm("Sure u want to delete ")) {
+            removeRow(e)
+        }
+    })
 
 
 }

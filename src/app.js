@@ -10,21 +10,11 @@ import { remote } from "electron";
 import jetpack from "fs-jetpack";
 import { greet } from "./hello_world/hello_world";
 import env from "env";
+import "./products"
+ 
 
 
 
-// TEST
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-
-const adapter = new FileSync('./src/database/products.json')
-const Product = low(adapter)
-
-Product.defaults({ products: [] })
-  .write()
-
-
-// Test end
 
 
 const app = remote.app;
@@ -38,7 +28,7 @@ const osMap = {
   win32: "Windows",
   darwin: "macOS",
   linux: "Linux"
-};
+};  
 
 // document.querySelector("#app").style.display = "block";
 // document.querySelector("#greet").innerHTML = greet();

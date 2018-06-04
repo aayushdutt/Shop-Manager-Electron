@@ -5,6 +5,13 @@ addButton.addEventListener('click', function(){
 })
 
 
+var removeButton = document.querySelector('.btn-danger')
+removeButton.addEventListener('click', function(event) {
+    if (confirm("Sure u want to delete ")) {
+        removeRow(event)
+    }
+})
+
 
 function addRow() {
     // Create table.
@@ -28,9 +35,11 @@ function addRow() {
 
 
     div.appendChild(row1)
-    row1col7.firstChild.addEventListener('click', function(e){removeRow(e)})
-
-
+    row1col7.firstChild.addEventListener('click', function(e){ 
+        if (confirm("Sure u want to delete ")) {
+            removeRow(e)
+        }
+    })
 }
 
 

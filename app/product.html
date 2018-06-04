@@ -20,7 +20,7 @@
           <a class="nav-link btn-outline-secondary" href="#">Sales</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link btn-outline-secondary" href="">Other</a>
+          <a class="nav-link btn-outline-secondary" href="#">Other</a>
       </li>
   </ul>
   <!-- NAVBAR END -->
@@ -36,35 +36,21 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">Product Name</th>
-        <th scope="col">Product Code</th>
         <th scope="col">Unit Price (Rs)</th>
         <th scope="col">Quantity</th>
-        <th scope="col">Discount(%)</th>
+        <th scope="col">Discount (%)</th>
         <th scope="col">Net Amount</th>
       </tr>
     </thead>
-    <tbody id="productBillTable">
-      <tr >
-        <td><input class="form-control" type="text" /></td>
-        <td><input class="form-control" type="text" /></td>
-        <td><input class="form-control" type="text" /></td>
-        <td><input class="form-control" type="text" /></td>
-        <td><input class="form-control" type="text" /></td> 
-        <td>
-                <button class="btn disabled btn-danger" type="button">Remove</button>
-        </td> 
-      </tr>
-      
+    <tbody id="productTable">
+            
     </tbody>
   </table>
 
-  <div class="mr-2 row">
-    <div class="col-lg-12">
-      <button id="addButton" class="btn btn-primary float-right">Add Item</button>
-      <button id="saveButton" class="mr-2 btn btn-success btn-lg float-right">Save</button>
-    </div>
-</div>  
+  <button id="addButton" class="btn btn-outline-primary ml-5 btn-lg">+</button>
   <!-- TABLE END -->
+
+  <button class="btn container btn-primary btn-lg mt-2 btn-block" type="button">Save</button>
   
   
   
