@@ -1,7 +1,7 @@
 
 // Small helpers you might want to keep
-import "./helpers/context_menu.js";
-import "./helpers/external_links.js";
+// import "./helpers/context_menu.js";
+// import "./helpers/external_links.js";
 // ----------------------------------------------------------------------------
 // Everything below is just to show you how it works. You can delete all of it.
 // ----------------------------------------------------------------------------
@@ -10,6 +10,25 @@ import { remote } from "electron";
 import jetpack from "fs-jetpack";
 import { greet } from "./hello_world/hello_world";
 import env from "env";
+
+// TEST
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('./src/database/products.json')
+const Product = low(adapter)
+
+Product.defaults({ products: [] })
+  .write()
+
+const result = Product.get('products')
+  // .push({ name: "Hey roducts" })
+  .write()
+
+console.log(result)
+
+// Test end
+
 
 const app = remote.app;
 const appDir = jetpack.cwd(app.getAppPath());

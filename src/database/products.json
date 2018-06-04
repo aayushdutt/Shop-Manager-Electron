@@ -1,0 +1,11 @@
+{
+  "products": [
+    {
+      "name": "Hey roducts",
+      "code": "456289",
+      "price": "45",
+      "discout": "20",
+      "stock": 50
+    }
+  ]
+}
