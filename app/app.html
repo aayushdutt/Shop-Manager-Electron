@@ -35,8 +35,8 @@
           <h2>Total: Rs <span>0</span></h2>
           <hr />
           <h4>Name of Customer:</h4>
-          <input class="form-control mb-2 custom-control-inline" type="text" />
-          <button class="btn container btn-primary btn-lg mt-2 btn-block" type="button">Checkout</button>
+          <input id="customerName" class="form-control mb-2 custom-control-inline" type="text" placeholder="Enter Name of Customer"/>
+          <button id="checkoutButton" class="btn container btn-primary btn-lg mt-2 btn-block" type="button">Checkout</button>
         </div>
       </div>  
       
@@ -49,7 +49,7 @@
       <tr>
         <th scope="col">Product Name</th>
         <th scope="col">Quantity</th>
-        <th scope="col">Unit Price (Rs)</th>
+        <th scope="col" onchange="changed()">Unit Price (Rs)</th>
         <th scope="col">Discount (%)</th>
         <th scope="col">Net Amount</th>
         <th scope="col">Net Amount</th>
@@ -59,9 +59,9 @@
       <tr >
         <td><input class="form-control" type="text" placeholder="Enter Product Name" /></td>
         <td><input class="form-control" type="number" value="1"/></td>
-        <td><input class="form-control" type="text" /></td>
-        <td><input class="form-control" type="text" /></td>
-        <td><input class="form-control" type="text" /></td> 
+        <td><input class="form-control" type="number" /></td>
+        <td><input class="form-control" type="number" /></td>
+        <td><input class="form-control" type="number" /></td> 
         <td>
                 <button class="btn btn-danger" type="button">Remove</button>
         </td> 
@@ -73,7 +73,7 @@
         <button id="addButton" class="btn btn-outline-primary ml-5 btn-lg">+</button>
   <!-- TABLE END -->
 
-  <button class="btn container btn-info btn-lg mt-2 btn-block" type="button">Calculate Total</button>
+  <button id="calculateButton" class="btn container btn-info btn-lg mt-2 btn-block" type="button">Calculate Total</button>
   
   
   

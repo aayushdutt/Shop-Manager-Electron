@@ -1,5 +1,6 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
+const saveButton = document.getElementById('saveButton')
 
 const adapter = new FileSync('./src/database/products.json')
 const Product = low(adapter)
@@ -23,4 +24,14 @@ function showExistingProducts(data, resultString){
   
   
 showExistingProducts(data)
-  
+
+saveButton.addEventListener('click', function(e){
+    e.preventDefault();
+    console.log("saved")
+})
+
+// // TEST 
+// console.log(Product.getState())
+// Product.setState({"elephants": []}).write()
+// console.log(Product.getState())
+// // TEST END
