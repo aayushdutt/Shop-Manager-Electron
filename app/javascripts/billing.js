@@ -4,6 +4,7 @@ var checkoutButton = document.getElementById("checkoutButton")
 var customerName = document.getElementById("customerName")
 
 var initRow = document.querySelector('tbody tr')
+var initProductName = initRow.children[0].firstChild
 var initQuantity = initRow.children[1].firstChild
 var initUnitPrice = initRow.children[2].firstChild
 var initDiscout = initRow.children[3].firstChild
