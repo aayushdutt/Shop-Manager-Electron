@@ -1,37 +1,65 @@
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
 const saveButton = document.getElementById('saveButton')
 
-const adapter = new FileSync('./src/database/products.json')
-const Product = low(adapter)
+var Datastore = require('nedb')
+  , db = new Datastore({ filename: './src/database2/products' });
+    db.loadDatabase(function (err) {    
+  console.log('nedb conncted!!')
+});
 
-Product.defaults({ products: [] }).write()
 
-var result = Product.get('products').write()
-let data =  result
-  
+var doc = {
+    name:"Jaljeera",
+    price:100,
+    stock: 50,
+    discount: 20
+}
 
-function showExistingProducts(data, resultString){
-    var el = document.getElementById('productTable')
-    var productString = ""
-    data.forEach(product => {
-        productString += `<tr ><td><input class="form-control" value="${product.name}" type="text" /></td><td><input class="form-control" value="${product.price}" type="text" /></td><td><input class="form-control" value="${product.stock}" type="text" /></td><td><input class="form-control" value="${product.discount}" type="text" /></td><td><button class="btn btn-danger" type="button">Remove</button></td></tr>`
-    })  
-    
-    el.innerHTML += productString;
-  
+
+function showExistingProducts(){
+    db.find({}, function(err, data){
+        var el = document.getElementById('productTable')
+        var productString = ""
+        data.forEach(product => {
+            productString += `<tr ><td><input class="form-control" value="${product.name}" type="text" /></td><td><input class="form-control" value="${product.price}" type="text" /></td><td><input class="form-control" value="${product.stock}" type="text" /></td><td><input class="form-control" value="${product.discount}" type="text" /></td><td><button class="btn btn-danger" type="button">Remove</button></td></tr>`
+        })  
+        
+        el.innerHTML += productString;  
+    })
 }
   
   
-showExistingProducts(data)
+showExistingProducts() //load the page with all existing products in db
+
 
 saveButton.addEventListener('click', function(e){
+    // Save button functioning
     e.preventDefault();
-    console.log("saved")
-})
 
-// // TEST 
-// console.log(Product.getState())
-// Product.setState({"elephants": []}).write()
-// console.log(Product.getState())
-// // TEST END
+    var tableBody =  document.querySelector('tbody');
+    var tableRows = document.querySelectorAll('tbody tr')
+
+    var allNewProducts = []
+    tableRows.forEach(row => {
+        var product = {
+            name: null,
+            price: null,
+            stock: null,
+            discount: null
+            }   
+
+        product.name = row.children[0].firstChild.value
+        product.price = Number(row.children[1].firstChild.value)
+        product.stock = Number(row.children[2].firstChild.value)
+        product.discount = Number(row.children[3].firstChild.value)
+        
+        allNewProducts.unshift(product)
+    })
+    console.log(allNewProducts)
+
+    db.remove({}, { multi: true }, function (err, numRemoved) {
+    });
+    db.insert(allNewProducts, function (err, newDocs) {
+        console.log('inserted all again!')
+      });
+
+})

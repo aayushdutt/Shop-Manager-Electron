@@ -12,7 +12,7 @@ var initNetPrice = initRow.children[4].firstChild
 var initInputs = [initQuantity, initUnitPrice, initDiscout]
 
 initInputs.forEach(input => {
-
+    
     input.addEventListener('input', function(e){
         calculateRowPrice(e)
     })
@@ -25,16 +25,15 @@ function calculateRowPrice(e){
     var discount = e.srcElement.parentNode.parentNode.children[3].firstChild.value
     var netPrice = e.srcElement.parentNode.parentNode.children[4].firstChild
 
-    var rowTotal = unitPrice*(1-discount/100)*quantity
-    netPrice.value = Math.round(rowTotal * 100) / 100
-
-
-    console.log(netPrice, 3)
-
+    var rowTotal = unitPrice*(1-discount/100)*quantity  //to round off
+    netPrice.value = Math.round(rowTotal * 100) / 100  
 }
 
 
 
+calculateButton.addEventListener('click', function(){
+    calculateTotal()
+})
 
 
 
@@ -98,9 +97,54 @@ function addRow() {
 
 
 // REMOVE ROW
-function removeRow(element) {
-    
+function removeRow(element) {    
     element.srcElement.parentNode.parentNode.remove();
 }
 // REMOVE ROW END
 
+
+
+
+
+// CALCULATE TOTAL AND CHECKOUT BUTTON
+
+function calculateTotal(){
+    var tableBody =  document.querySelector('tbody');
+    var tableRows = document.querySelectorAll('tbody tr')
+
+    var currentTransaction = {
+        customerName: "",
+        products : [
+            
+        ]
+    }
+
+    tableRows.forEach(row => {
+        var product = {
+            "name": "",
+            "quantity": null,
+            "price": null,
+            "discount": null,
+            "rowTotal": null 
+            }
+
+        product.name = row.children[0].firstChild.value
+        product.quantity = Number(row.children[1].firstChild.value)
+        product.price = Number(row.children[2].firstChild.value)
+        product.discount = Number(row.children[3].firstChild.value)
+        product.rowTotal = Number(row.children[4].firstChild.value)
+
+        currentTransaction.products.push(product)
+    })
+
+    var totalAmountText = document.getElementById("totalAmount")
+    var totalAmount = 0;
+    currentTransaction.products.forEach(product => {totalAmount+= product.rowTotal; console.log(product.rowTotal)})
+    totalAmount = Math.ceil(totalAmount)
+    totalAmountText.innerText = totalAmount
+
+    checkoutButton.addEventListener('click', function(e){
+        e.preventDefault()
+        console.log("worked")
+    })
+}
